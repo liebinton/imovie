@@ -1,0 +1,44 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    |   
+    |     
+    title Login
+    |   
+    |     
+    link(rel="stylesheet", type="text/css", href="/css/login.css")
+    style.
+      body{
+      background:url('/images/backg7.jpg')no-repeat;
+      background-position:center center;
+      }
+      #login h1{
+      color:white;
+      }
+      a{
+      color:white;
+      }
+      span{
+      color:white;
+      font-size:16px;
+      display:inline-block;
+      }
+  |   
+  body
+    #login
+      h1 User Login
+      h1 用户登录
+      |   
+      |         
+      form(method="post", action="/login_check")
+        span #{data}
+        input(type="text", required="required", placeholder="用户名", name="username")
+        |   
+        |             
+        input(type="password", required="required", placeholder="密码", name="password")
+        |   
+        |             
+        button.but(type="submit") 登录
+        a(href="/signin") 还没有账号？立即注册 >
+        

@@ -1,0 +1,119 @@
+.wrapper{
+	width: 1200px;
+	margin: 0 auto;
+	height: 800px;
+	margin-top: 20px;
+}
+#left{
+	background-color:green;
+	float: left;
+	width: 18%;
+	height: 100%;
+	background: rgb(243,243,243);
+}
+#right{
+	float: right;
+	width: 82%;
+	height: 100%;
+}
+#clear{
+	clear: both;
+}
+#user_info p{
+	text-align: right;
+	display: inline-block;
+	width: 100px;
+	font-family: "Arial";
+	font-size: 16px;
+}
+.info_item{
+	height: 80px;
+}
+#left_top{
+	margin-top: 40px;
+	text-align: center;
+	font-family: "Arial";
+	font-size: 22px;
+	color: black;
+	border-bottom: 1px solid silver;
+	height: 40px;
+	margin-left:5px; 
+	margin-right:5px;
+
+}
+#left_bot{
+	margin-top: 30px;
+	text-align: center;
+	font-family: "Arial";
+	font-size: 18px;
+	margin-left: 20px;
+	margin-right: 20px;
+	height: 40px;
+	background: red;
+	color: white;
+	line-height: 40px;
+}
+#right_top{
+	height: 10%;
+	border-bottom: 1px solid silver;
+	margin-left: 20px;
+	line-height: 80px;
+}
+#right_top_title{
+	margin-left: 30px;
+	font-size: 20px;
+}
+#right_bot{
+	height: 90%;
+	margin-top: 50px;
+}
+#user_head_main{
+	height: 90%;
+	float: left;
+	width: 34%;
+}
+#user_head_main #user_head{
+	width: 230px;
+	height: 280px;
+}
+#user_head_main #upload_head{
+	display: block;
+	width: 140px;
+	height: 40px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	font-size: 15px;
+	background: red;
+	color: white;
+	margin-left: 90px;
+	margin-top: 30px;
+}
+#user_head{
+	margin-top: 30px;
+	margin-left:50px;
+}
+#user_info #info_upload{
+	width: 140px;
+	height: 40px;
+	border-radius: 5px;
+	cursor: pointer;
+	border: none;
+	font-size: 15px;
+	background: red;
+	color: white;
+	margin-left: 150px;
+}
+#user_info .user_input{
+	width: 160px;
+	height: 30px;
+	border: 1px solid silver;
+	border-radius: 3px;
+}
+#user_info .user_sign{
+	width: 400px;
+}
+#user_info .info_item_detail{
+	text-align: left;
+	width: 400px;
+}

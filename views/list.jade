@@ -1,0 +1,38 @@
+extends layout
+block content
+ #content
+  #list_selector
+    ul
+      li.list_li.list_selected
+        a(href="/list") 热映口碑榜
+      //
+        <li class="list_li"><a href="">最受期待榜</a></li>
+        <li class="list_li"><a href="">国内票房榜</a></li>
+        <li class="list_li"><a href="">北美票房榜</a></li>
+  | 		
+  #list_wrapper
+    #page_info
+      p#page_time #{date} 已更新
+      | 				
+      p#page_rule
+        | 榜单规则：将昨日国内热映的影片，按照评分从高到低排列取前10名。相关数据来源于“猫眼专业版”及“猫眼电影库”.
+    | 			
+    #list_main
+      ul
+        each item in data
+          li.list_movie
+            span.list_num
+              span.list_num_inner #{item.id}
+            | 						
+            a(href="/movie?id=#{item.id}")
+              img(src="#{item.poster}", alt="")
+            | 						
+            .list_movie_info
+              a.list_movie_title(href="/movie?id=#{item.id}") #{item.name}
+              | 							
+              p.list_movie_actor 主演：#{item.actor}
+              | 							
+              p.list_movie_message 上映时间：#{item.year}
+            | 						
+            i.list_movie_score #{item.score}
+          | 					

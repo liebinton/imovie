@@ -1,0 +1,196 @@
+var index_model = require('../models/index_model.js');
+
+exports.showindex = function(req,res,next){
+	index_model.checkindex(function(results){
+		console.log("this is index session");
+		var user = req.session.username;
+		console.log(user);
+		if(user){
+			index_model.login_user(user,function(userinfo){
+				console.log("this should be right");
+				console.log(userinfo);
+				res.render('index',{data:results,user:req.session.username,direct:'./user',head:userinfo[0].head});
+			});
+		}
+		else{
+			console.log("this should be wrong");
+			res.render('index',{data:results,user:"登 陆",direct:'./login',head:'/images/user.png'});
+		}
+	});
+};
+exports.showmovie = function(req,res,next){
+	console.log(req.query.id);
+	var id = req.query.id;	
+	index_model.checkmovie(id,function(results){
+		var user = req.session.username;
+		console.log(user);
+		if(user){
+			index_model.login_user(user,function(userinfo){
+				index_model.check_comments(id,function(comment_results){
+					console.log("this should be right");
+					console.log(userinfo);
+					console.log("comment_results");
+					console.log(comment_results);
+					res.render('movie',{data:results[0],user:req.session.username,direct:'./user',head:userinfo[0].head,comments:comment_results,login_status:'#target'});
+				});
+			});
+		}
+		else{
+			index_model.check_comments(id,function(comment_results){
+				console.log("this should be wrong");
+				console.log("comment_results");
+				console.log(comment_results);
+				// var user_id=comment_results[0].user_id;
+				// index_model.check_comments_user(user_id,function(comments_user_result){
+					res.render('movie',{data:results[0],user:"登 陆",direct:'./login',head:'/images/user.png',comments:comment_results,login_status:"/login"});
+					// ,comments:comment_results
+				// });
+			});
+		}
+	});
+
+};
+exports.login = function(req,res,next){
+	console.log("this is login page");
+	res.render('login');
+};
+exports.signin = function(req,res,next){	
+	console.log("this is sign in page");
+	res.render('signin');
+};
+exports.login_check = function(req,res,next){
+	var username = req.body.username;
+	var password = req.body.password;
+	index_model.check_login_data(username,password,function(results){
+		if(results.length!=0){
+			if(username == results[0].username&&password==results[0].password){
+				console.log("login success");
+				console.log(results);
+				req.session.username = username;
+				console.log("this is session_username");
+				console.log(req.session.username);
+				res.render("login_success");
+			}
+			else{
+				console.log("username or password is wrong err_code:2");
+			}
+		}
+		else{
+			console.log("username or password is wrong err_code:1");
+			res.render("login",{data:"用户名或密码错误 请重新输入！"});
+		}
+	});
+};
+exports.signin_check = function(req,res,next){	
+	console.log("this is sign in check");
+	var username = req.body.username;
+	var password = req.body.password;
+	var repassword = req.body.repassword;
+	console.log(username);
+	console.log(password);
+	index_model.check_signin_exist(username,function(results){
+		if(results.length!=0)
+		{
+			res.render("signin",{data:"该用户名已被注册 请重新输入！"});
+		}
+		else if(repassword!=password){
+			res.render("signin",{data:"两次输入密码不一致 请重新输入！"});
+		}
+		else{
+			index_model.do_signin(username,password);
+			res.render("signin",{success:"用户注册成功 请登录 >"});
+		}
+	});
+};
+exports.get_list = function(req,res,next){	
+	console.log("this is get_list");
+	var user = req.session.username;
+	index_model.do_check_list(function(results){
+	if(user){
+			index_model.login_user(user,function(userinfo){
+				console.log("this should be right");
+				console.log(userinfo);
+				res.render('list',{date:results[0].list_time,data:results,user:req.session.username,direct:'./user',head:userinfo[0].head});
+			});
+		}
+	else{
+			console.log("this should be wrong");
+			res.render('list',{date:results[0].list_time,data:results,user:"登 陆",direct:'./login',head:'/images/user.png'});
+		}
+	});
+};
+exports.user_info = function(req,res,next){	
+	console.log("this is get userinfo");
+	var username = req.session.username;
+	var user = req.session.username;
+	console.log(user);
+	index_model.get_user_info(username,function(results){
+		if(user){
+			index_model.login_user(user,function(userinfo){
+			console.log("this should be right");
+			console.log(userinfo);
+			res.render('user',{data:results[0],user:req.session.username,direct:'./user',head:userinfo[0].head});
+			});
+		}
+		else{
+			console.log("this should be wrong");
+			res.render('user',{data:results[0],user:"登 陆",direct:'./login',head:'/images/user.png'});
+		}
+	});
+};
+exports.show_change_page =function(req,res,next){
+	console.log("this is change userinfo");
+	var username = req.session.username;
+	index_model.get_user_info(username,function(results){
+	var user = req.session.username;
+	console.log(user);
+	index_model.get_user_info(username,function(results){
+		if(user){
+			index_model.login_user(user,function(userinfo){
+				console.log("this should be right");
+				console.log(userinfo);
+				res.render('change_user',{data:results[0],user:req.session.username,direct:'./user',head:userinfo[0].head});
+			});
+		}
+		else{
+			console.log("this should be wrong");
+			res.render('change_user',{data:results[0],user:"登 陆",direct:'./login',head:'/images/user.png'});
+		}
+	});
+});
+}
+exports.change_userinfo = function(req,res,next){	
+		console.log("this is change userinfo");
+		console.log("this is new userinfo");
+		console.log(req.body);
+		var username = req.session.username;
+		var new_username = req.body.username;
+		var new_password = req.body.password;
+		var new_sex = req.body.sex;
+		var new_age = req.body.age;
+		var new_job = req.body.job;
+		var new_phone = req.body.phone;
+		var new_personal_sign = req.body.personal_sign;
+		console.log("this is new_personal_sign");
+		console.log(new_personal_sign);
+		index_model.do_change_userinfo(new_username,new_password,new_sex,new_age,new_job,new_phone,new_personal_sign,username,function(results){
+			console.log(results);
+			req.session.username=new_username;
+			req.session.password=new_password;
+		var user = req.session.username;
+		console.log(user);
+		index_model.get_user_info(username,function(results){
+			if(user){
+				index_model.login_user(user,function(userinfo){
+					console.log("this should be right");
+					console.log(userinfo);
+					res.render('user',{data:results[0],user:req.session.username,direct:'./user',head:userinfo[0].head});
+				});
+			}
+			else{
+				console.log("this should be wrong");
+				res.render('user',{data:results[0],user:"登 陆",direct:'./login',head:'/images/user.png'});
+			}
+		});
+	});
+};

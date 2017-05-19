@@ -1,0 +1,34 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    |   
+    |     
+    title signin
+    |   
+    |     
+    link(rel="stylesheet", type="text/css", href="/css/login.css")
+    style.
+      span{
+        color:rgb(47,59,104);
+        font-size:16px;
+      }  
+  body
+    #login
+      h1 Welcome
+      h1 欢迎加入
+      |   
+      |         
+      form(method="post", action="/signin_check")
+        span #{data}
+        span
+          a(href="/login") #{success}
+        input(type="text", required="required", placeholder="用户名", name="username")
+        |   
+        |             
+        input(type="password", required="required", placeholder="创建密码", name="password")
+        |             
+        input(type="password", required="required", placeholder="确认密码", name="repassword")
+        |             
+        button.but(type="submit") 注册
+        a(href="/login") 已有账号？立即登录 >

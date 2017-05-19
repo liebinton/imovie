@@ -1,0 +1,141 @@
+extends layout
+block content
+ .content
+      // banner
+      .banner
+        .banner_wrapper
+          .poster
+            img(src='#{data.poster}', alt="")
+            | 					
+            .movie_type #{data.type}
+          | 			
+          | 			
+          .banner_content
+            .banner_right
+              .banner_title
+                h1 #{data.name}
+              | 					
+              .banner_message
+                ul
+                  li 类型：动作
+                  | 							
+                  li #{data.country} / 130分钟
+                  | 							
+                  li #{data.year}大陆上映
+              | 					
+              .banner_buy
+                | 立即购票
+            | 				
+            .banner_score
+              h3
+                | 豆瓣评分 : 
+                i #{data.star}
+              | 					
+              h3
+                | 累计票房 : 
+                i 1000
+                |  万
+      // detail
+      .movie_detail
+        .movie_wrapper
+          .movie_recommend.detail_module
+            .module_title 剧情简介
+            | 					
+            .module_content
+              p
+                | #{data.summary}
+          | 				
+          .movie_actors.detail_module
+            .module_title 演职人员
+            | 					
+            .module_content
+              .actor_item
+                ul
+                  li
+                    .actor_type 导演
+                    | 									
+                    img(src="#{data.poster}", alt="")
+                    | 									
+                    .actor_info #{data.director}
+                  | 								
+                  li
+                    .actor_type 演员
+                    | 									
+                    img(src="#{data.poster}", alt="")
+                    | 									
+                    .actor_info #{data.actor}
+                  | 								
+                  li
+                    .actor_type 演员
+                    | 									
+                    img(src="#{data.poster}", alt="")
+                    | 									
+                    .actor_info #{data.actor}
+                  li
+                    .actor_type 演员
+                    | 									
+                    img(src="#{data.poster}", alt="")
+                    | 									
+                    .actor_info #{data.actor}
+                  | 								
+                  li
+                    .actor_type 演员
+                    | 									
+                    img(src="#{data.poster}", alt="")
+                    | 									
+                    .actor_info #{data.actor}
+          | 				
+          .movie_pics.detail_module
+            .module_title 预告片
+            | 					
+            .module_content
+              video(src="videos/video_test.mp4", type="video/mp4", width="700", height="300")				
+          .comments.detail_module
+            .module_title 热门短评          
+            .write_item
+              span.write_button
+                a#write_href(href="#{login_status}") 写短评         
+            .module_content
+              each item in comments  
+                .comment_user
+                  .comment_head
+                    img(src="#{item.head}", alt="")              
+                  .comment_info
+                    p.user_name #{item.username}                
+                    p.comment_date 2017-05-14               
+                    p.comment_score 评价分数：#{item.comment_score}             
+                  .clear            
+                .comment_item
+                  p #{item.comment_content}
+              form(action="/comments", method="post")
+                #target
+                .write_comments
+                  textarea#new_comment(name="new_comment", cols="30", rows="3", wrap="virtual", maxlength="255", placeholder=" 在此输入评论内容")
+                  |               
+                  .clear
+                  span#movie_score_title 评价分数 :
+                  input#movie_score(type="text",name="movie_core" placeholder="0~10")
+                  img#score_standard(src="/images/score_standard.jpeg")           
+                  input#comment_submit(type="submit", name="submit", value="发 布")
+                  input#show_login_status(type="submit",name="loginstatus",value='#{login_status}')  
+                  .clear
+                  script.
+                    var login_status=document.getElementById('write_href').href;
+                    var text_area = document.getElementById('new_comment');
+                    var comment_submit = document.getElementById('comment_submit');
+                    console.log(login_status);
+                    if(login_status=="http://localhost:3000/login"){
+                      console.log("1111");
+                      console.log(text_area);
+                      text_area.setAttribute('readonly','true');
+                      text_area.setAttribute('placeholder','请先登陆再发表评论');
+                      comment_submit.setAttribute('disabled','true');
+                    }
+                    else{
+                      console.log("0000");
+                    }
+
+
+                              
+
+

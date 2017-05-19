@@ -1,0 +1,74 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    | 	
+    title 主页
+    | 	
+    link(rel="stylesheet", href="css/reset.css")
+    | 	
+    link(rel="stylesheet", href="css/index.css")
+    link(rel='stylesheet', href='css/movie.css')
+    link(rel='stylesheet', href='css/list.css')
+    link(rel='stylesheet', href='css/user.css')
+  body
+    // header
+    header#header
+      #header_inner
+        #header_logo
+          a(href="/")
+            img#logo_img(src="images/logo.png", alt="")
+        | 			
+        ul#header_pages
+          a(href="/")
+            li#header_index.page_selected 主页
+          | 				
+          a(href="")
+            li#header_movie 电影
+          | 				
+          a(href="/list")
+            li#header_list 榜单
+          | 				
+          a(href="/ticket")
+            li#header_hot 购票
+        | 			
+        ul#header_sites
+          a(href="https://movie.douban.com/")
+            li
+              img#douban(src="images/douban.png", alt="")
+          | 				
+          a(href="https://www.maoyan.com/")
+            li
+              img#maoyan(src="images/maoyan.png", alt="")
+          | 				
+          a(href="https://www.mtime.com/")
+            li
+              img#shiguang(src="images/shiguang.png", alt="")
+        | 			
+        #header_login
+          a(href="#{direct}")
+            img#login_logo(src="#{head}", alt="")
+            span #{user}
+      | 		
+      .clear-flow
+    // content
+    block content
+    // footer
+    footer#footer
+      #footer_inner
+        ul#footer_ul
+          li
+            a(href="#") ⇑  Moive-Shop-Liebinton
+          | 				
+          li
+            a(href="#") 关于Liebinton
+          | 				
+          li
+            a(href="#") 联系我
+          | 				
+          li
+            a(href="#") 免责声明
+          | 				
+          li
+            a(href="#") ©copyright 2017 all right reserved
+      | 		
+      .clear-flow

@@ -1,0 +1,347 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    | 	
+    title 主页
+    | 	
+    link(rel="stylesheet", href="/css/reset.css")
+    | 	
+    link(rel="stylesheet", href="/css/index.css")
+  body
+    // header
+    header#header
+      #header_inner
+        #header_logo
+          a(href="/")
+            img#logo_img(src="/images/logo.png", alt="")
+        | 			
+        ul#header_pages
+          a(href="/")
+            li#header_index.page_selected 主页
+          | 				
+          a(href="")
+            li#header_movie 电影
+          | 				
+          a(href="/list")
+            li#header_list 榜单
+          | 				
+          a(href="/ticket")
+            li#header_hot 购票
+        | 			
+        ul#header_sites
+          a(href="https://movie.douban.com/")
+            li
+              img#douban(src="/images/douban.png", alt="")
+          | 				
+          a(href="https://www.maoyan.com/")
+            li
+              img#maoyan(src="/images/maoyan.png", alt="")
+          | 				
+          a(href="https://www.mtime.com/")
+            li
+              img#shiguang(src="/images/shiguang.png", alt="")
+        | 			
+        #header_login
+          a(href= '#{direct}')
+            img#login_logo(src='#{head}', alt="")
+            span #{user}
+      | 		
+      .clear-flow
+    // content
+    #content
+      #content_banner
+        //- img(src="/images/banner.jpg") 		
+      #content_inner
+        #content_main
+          #moive_grid
+            .panel
+              .panel_header
+                span.panel_more
+                  a(href="") 全部
+                  | 								
+                  span.panel-arrow
+                    | >
+                | 							
+                span.panel_title
+                  span.panel_title_content
+                    | 正在热映（ 27部 ） 						
+              .panel_content
+                  each item in data
+                    -if(item.class=='now')
+                      .panel_item
+                        a(href="/movie?id=#{item.id}")
+                          img.item_img(src='#{item.poster}', alt="")
+                          |                   
+                          .item_type  #{item.type} 
+                          |                   
+                          .item_info
+                            | #{item.name} 
+                            span.item_score #{item.star}
+                          |                   
+                        a(href='/index_buy?id=#{item.id}')
+                          .item_buy 购 票					
+            .panel
+              .panel_header
+                span.panel_more
+                  a(href="") 全部
+                  | 								
+                  span.panel-arrow
+                    | >
+                | 							
+                span.panel_title
+                  span.panel_title_content.panel_color
+                    | 即将上映（ 27部 ）
+              | 						
+              .panel_content
+                  each item in data
+                    -if(item.class=='comming')
+                      .panel_item
+                        a(href="/movie?id=#{item.id}")
+                          img.item_img(src='#{item.poster}', alt="")
+                          |                   
+                          .item_type  #{item.type} 
+                          |                   
+                          .item_info
+                            | #{item.name} 
+                            span.item_score #{item.star}
+                          |                   
+                        a(href='/index_buy?id=#{item.id}')
+                          .item_buy 购 票
+            | 					
+            .panel
+              .panel_header
+                span.panel_more
+                  a(href="") 全部
+                  | 								
+                  span.panel-arrow
+                    | >
+                | 							
+                span.panel_title
+                  span.panel_title_content
+                    | 热播电影
+                | 							
+                ul.hot_select_title
+                  li
+                    a(href="") 爱情
+                  | 										
+                  li
+                    a(href="") 动作
+                  | 										
+                  li
+                    a(href="") 喜剧
+                  | 										
+                  li
+                    a(href="") 恐怖
+                  | 										
+                  li
+                    a(href="") 动画
+              | 						
+              .panel_content.last_panel_row
+                  each item in data
+                    -if(item.class=='hot')
+                      .panel_item
+                        a(href="/movie?id=#{item.id}")
+                          img.item_img(src='#{item.poster}', alt="")
+                          |                   
+                          .item_type  #{item.type} 
+                          |                   
+                          .item_info
+                            | #{item.name} 
+                            span.item_score #{item.star}
+                          |                   
+                        a(href='/index_buy?id=#{item.id}')
+        | 			
+        #content_aside
+          #aside_top
+            .top_header 今日票房
+            | 					
+            .top_content
+              ul
+                li.aside_content_first
+                  img(src="/images/list_test.jpg", alt="")
+                  span#rank_first 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 2
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 3
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 4
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 5
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 6
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 7
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 8
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 9
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 10
+                  | 一条狗的使命
+                  span.rank 795.43万
+          | 				
+          #aside_mid
+            .top_header.header_color
+              | 最受期待
+              a(href="")
+                span.aside_view_all 查看完整榜单 >
+            | 					
+            .top_content
+              ul
+                li.aside_content_first
+                  img(src="/images/list_test.jpg", alt="")
+                  span#rank_first 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 2
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 3
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 4
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 5
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 6
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 7
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 8
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 9
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 10
+                  | 一条狗的使命
+                  span.rank 795.43万
+          | 				
+          #aside_bot
+            .top_header.header_color
+              | TOP100 
+              a(href="")
+                span.aside_view_all 查看完整榜单 >
+            | 					
+            .top_content
+              ul
+                li.aside_content_first
+                  img(src="/images/list_test.jpg", alt="")
+                  span#rank_first 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 2
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 3
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 4
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 5
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 6
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 7
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 8
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 9
+                  | 一条狗的使命
+                  span.rank 795.43万
+                | 							
+                li
+                  h4 10
+                  | 一条狗的使命
+                  span.rank 795.43万
+        | 			
+        .clear-flow
+    // footer
+    footer#footer
+      #footer_inner
+        ul#footer_ul
+          li
+            a(href="#") ⇑  Moive-Shop-Liebinton
+          | 				
+          li
+            a(href="#") 关于Liebinton
+          | 				
+          li
+            a(href="#") 联系我
+          | 				
+          li
+            a(href="#") 免责声明
+          | 				
+          li
+            a(href="#") ©copyright 2017 all right reserved
+      | 		
+      .clear-flow

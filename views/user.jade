@@ -1,0 +1,57 @@
+extends layout
+block content
+  #content
+    .wrapper
+      #left
+        #left_top
+          p 我的设置
+        |         
+        #left_bot
+          p 基本信息
+      |       
+      #right
+        #right_top
+          p#right_top_title 基本信息
+        |         
+        #right_bot
+          #user_head_main
+            img#user_head(src="test.jpeg", alt="")
+          |           
+          #user_info
+            .info_item
+              p 用户名：
+              |                 
+              p.info_item_detail #{data.username}
+            .info_item
+              p 密 码：                
+              p.info_item_detail *******                
+            .info_item
+              p 性 别：  
+              |                 
+              p.info_item_detail #{data.sex}
+            |               
+            .info_item
+              p 年 龄：
+              |                 
+              p.info_item_detail #{data.age}
+            |               
+            .info_item
+              p 职 业：
+              |                 
+              p.info_item_detail #{data.job}
+            |               
+            .info_item
+              p 电话号码：
+              |                 
+              p.info_item_detail #{data.phone}
+            |               
+            .info_item
+              p 个性签名：
+              |                 
+              p.info_item_detail #{data.personal_sign}
+            |               
+            .info_item
+              a(href="/show_change_page")
+                input#info_upload(type="submit", value="修 改")
+      |       
+      #clear

@@ -1,0 +1,61 @@
+extends layout
+block content
+   #content
+    .wrapper
+      #left
+        #left_top
+          p 我的设置
+        |         
+        #left_bot
+          p 基本信息
+      |       
+      #right
+        #right_top
+          p#right_top_title 基本信息
+        |         
+        #right_bot
+          #user_head_main
+            img#user_head(src="/images/test.jpeg", alt="")
+            |             
+            input#upload_head(type="submit", value="上传头像")
+          |           
+          #user_info
+            form(action="/userinfo", method="post")
+              .info_item
+                p 用户名：
+                |                 
+                input.user_input(type="text",name="username",value="#{data.username}")
+              .info_item
+                p 密 码：                
+                input.user_input(type="password",name="password",value="#{data.password}")                
+              .info_item
+                p 性 别：                   
+                select.user_input(name="sex",value="#{data.sex}")
+                  option.user_input(value="男") 男
+                  |                   
+                  option.user_input(value="女") 女
+              |               
+              .info_item
+                p 年 龄：
+                |                 
+                input.user_input(type="text",name="age",value="#{data.age}")
+              |               
+              .info_item
+                p 职 业：
+                |                 
+                input.user_input(type="text",name="job",value="#{data.job}")
+              |               
+              .info_item
+                p 电话号码：
+                |                 
+                input.user_input(type="tel",name="phone",value="#{data.phone}")
+              |               
+              .info_item
+                p 个性签名：
+                |                 
+                input.user_input.user_sign(type="text",name="personal_sign",value="#{data.personal_sign}")
+              |               
+              .info_item
+                input#info_upload(type="submit", value="保 存")
+      |       
+      #clear
