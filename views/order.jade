@@ -1,0 +1,204 @@
+extends layout
+block content
+  #content
+  #ticket_detail_wrapper
+    .ticket_detail_item
+      .ticket_detail_main
+        .ticket_detail_info
+          .ticket_poster
+            img(src="/images/test.jpeg", alt="")
+          |             
+          .info_message_movie
+            p.ticket_detail_name 生化危机6：终章
+            |               
+            p.ticket_detail_actor 电影主演：米拉·乔沃维奇
+            |               
+            p.ticket_detail_kind 电影类型：动作
+            |               
+            p.ticket_detail_year 上映时间：2017
+            |               
+            p.ticket_detail_score 电影评分：6.4
+          |             
+          .info_message_ticket
+            p.ticket_detail_language 影片语言：英语
+            |               
+            p.ticket_detail_type 荧幕类型：3D
+            |               
+            p.ticket_detail_time 观影时间：2017-4-5 10:23
+            |               
+            p.ticket_detail_position 观影地点：A号厅
+          |             
+          .clear-flow
+        |           
+        .ticket_seat_main
+          form(action="/order", method="post")
+            #seat_main
+              table
+                tr
+                  td
+                  |                 
+                  td#screen(colspan="12")
+                |               
+                tr
+                  td(colspan="12")
+                |               
+                tr
+                  td 1
+                  |                 
+                  td.seat(data-selected="false", data-value="1") 1
+                  |                 
+                  td.seat(data-selected="false", data-value="2") 2
+                  |                 
+                  td.seat(data-selected="false", data-value="3") 3
+                  |                 
+                  td(rowspan="4")
+                  |                 
+                  td.seat(data-selected="false", data-value="4") 4
+                  |                 
+                  td.seat(data-selected="false", data-value="5") 5
+                  |                 
+                  td.seat(data-selected="false", data-value="6") 6
+                  |                 
+                  td.seat(data-selected="false", data-value="7") 7
+                  |                 
+                  td(rowspan="4")
+                  |                 
+                  td.seat(data-selected="false", data-value="8") 8
+                  |                 
+                  td.seat(data-selected="false", data-value="9") 9
+                  |                 
+                  td.seat(data-selected="false", data-value="10") 10
+                |                
+                tr
+                  td 2
+                  |                 
+                  td.seat(data-selected="false", data-value="11") 11
+                  |                 
+                  td.seat(data-selected="false", data-value="12") 12
+                  |                 
+                  td.seat(data-selected="false", data-value="13") 13
+                  |                 
+                  td.seat(data-selected="false", data-value="14") 14
+                  |                 
+                  td.seat(data-selected="false", data-value="15") 15
+                  |                 
+                  td.seat(data-selected="false", data-value="16") 16
+                  |                 
+                  td.seat(data-selected="false", data-value="17") 17
+                  |                 
+                  td.seat(data-selected="false", data-value="18") 18
+                  |                 
+                  td.seat(data-selected="false", data-value="19") 19
+                  |                 
+                  td.seat(data-selected="false", data-value="20") 20
+                |                
+                tr
+                  td 3
+                  |                 
+                  td.seat(data-selected="false", data-value="21") 21
+                  |                 
+                  td.seat(data-selected="false", data-value="22") 22
+                  |                 
+                  td.seat(data-selected="false", data-value="23") 23
+                  |                 
+                  td.seat(data-selected="false", data-value="24") 24
+                  |                 
+                  td.seat(data-selected="false", data-value="25") 25
+                  |                 
+                  td.seat(data-selected="false", data-value="26") 26
+                  |                 
+                  td.seat(data-selected="false", data-value="27") 27
+                  |                 
+                  td.seat(data-selected="false", data-value="28") 28
+                  |                 
+                  td.seat(data-selected="false", data-value="29") 29
+                  |                 
+                  td.seat(data-selected="false", data-value="30") 30
+                |                
+                tr
+                  td 4
+                  |                 
+                  td.seat(data-selected="false", data-value="31") 31
+                  |                 
+                  td.seat(data-selected="false", data-value="32") 32
+                  |                 
+                  td.seat(data-selected="false", data-value="33") 33
+                  |                 
+                  td.seat(data-selected="false", data-value="34") 34
+                  |                 
+                  td.seat(data-selected="false", data-value="35") 35
+                  |                 
+                  td.seat(data-selected="false", data-value="36") 36
+                  |                 
+                  td.seat(data-selected="false", data-value="37") 37
+                  |                 
+                  td.seat(data-selected="false", data-value="38") 38
+                  |                 
+                  td.seat(data-selected="false", data-value="39") 39
+                  |                 
+                  td.seat(data-selected="false", data-value="40") 40
+                |               
+                tr
+                  td
+                  |                 
+                  td 1
+                  |                 
+                  td 2
+                  |                 
+                  td 3
+                  |                 
+                  td
+                  |                 
+                  td 4
+                  |                 
+                  td 5
+                  |                 
+                  td 6
+                  |                 
+                  td 7
+                  |                 
+                  td
+                  |                 
+                  td 8
+                  |                 
+                  td 9
+                  |                 
+                  td 10
+              |             
+              span
+                | 已选座位：
+                input#ticket_seat_choose(type="text", name="ticket_seat_choose", readonly="true")
+              |             
+              .clear-flow
+              |             
+              span
+                | 订单金额：
+                input#ticket_seat_price(type="text", name="ticket_seat_price", readonly="true")
+                |               ￥
+              |             
+              input#ticket_submit(type="submit", name="submit", value="订 票")  
+  .clear-flow
+  script.
+    var seatList = [];
+    var sold_data =[1,3,5];
+    for(var i=0;i<sold_data.length;i++){
+    $(".seat[data-value='"+sold_data[i]+"']").addClass("sold");
+    }
+    $(".seat").click(function(){
+    if($(this).hasClass("sold")){
+    return false;
+    }
+    if ($(this).data("selected")) {
+    seatList.splice($.inArray($(this).data("value"),seatList),1);
+    $(this).removeClass('selected');
+    $(this).data("selected",false);
+    }else{
+    seatList.push($(this).data("value"));
+    $(this).addClass('selected');
+    $(this).data("selected",true);
+    }
+    console.log(seatList);
+    $("#ticket_seat_choose").val(seatList);
+    $('#ticket_seat_price').val(seatList.length*30);
+    });
+

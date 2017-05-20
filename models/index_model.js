@@ -39,9 +39,9 @@ exports.check_comments = function(id,callback){
 		}
 	});
 };
-exports.save_comment =function(username,callback){
-	var sql = 'select * from t_users where username=?';
-	db.connection.query(sql,[username],function(err,results){
+exports.save_comment =function(movie_id,user_id,new_comment,date,movie_score,callback){
+	var sql = 'insert into t_comments (movie_id,user_id,comment_content,comment_time,comment_score) values(?,?,?,?,?)';
+	db.connection.query(sql,[movie_id,user_id,new_comment,date,movie_score],function(err,results){
 		if(err){
 			throw err;
 		}else{

@@ -28,9 +28,8 @@ exports.showmovie = function(req,res,next){
 			index_model.login_user(user,function(userinfo){
 				index_model.check_comments(id,function(comment_results){
 					console.log("this should be right");
-					console.log(userinfo);
-					console.log("comment_results");
-					console.log(comment_results);
+					console.log('this is data:results');
+					console.log(results);
 					res.render('movie',{data:results[0],user:req.session.username,direct:'./user',head:userinfo[0].head,comments:comment_results,login_status:'#target'});
 				});
 			});
@@ -38,8 +37,8 @@ exports.showmovie = function(req,res,next){
 		else{
 			index_model.check_comments(id,function(comment_results){
 				console.log("this should be wrong");
-				console.log("comment_results");
-				console.log(comment_results);
+				console.log('this is data:results');
+				console.log(results);
 				// var user_id=comment_results[0].user_id;
 				// index_model.check_comments_user(user_id,function(comments_user_result){
 					res.render('movie',{data:results[0],user:"登 陆",direct:'./login',head:'/images/user.png',comments:comment_results,login_status:"/login"});
@@ -49,6 +48,21 @@ exports.showmovie = function(req,res,next){
 		}
 	});
 
+};
+exports.post_comment = function(req,res,next){
+	var user_id=req.session.user_id;
+	var movie_id =req.body.movie_id;
+	var new_comment =req.body.new_comment;
+	var movie_score =req.body.movie_score;
+	var now = new Date();
+	var date = now.getFullYear()+"-"+now.getMonth()+"-"+now.getDay();
+	console.log(now.getFullYear());
+	console.log("up is get year");
+	index_model.save_comment(movie_id,user_id,new_comment,date,movie_score,function(results){
+		console.log("insert success");
+	});
+	console.log("this is req body");
+	console.log(req.body);
 };
 exports.login = function(req,res,next){
 	console.log("this is login page");
@@ -67,8 +81,10 @@ exports.login_check = function(req,res,next){
 				console.log("login success");
 				console.log(results);
 				req.session.username = username;
+				req.session.user_id=results[0].id;
 				console.log("this is session_username");
 				console.log(req.session.username);
+				console.log(req.session.user_id);
 				res.render("login_success");
 			}
 			else{

@@ -1,0 +1,74 @@
+#ticket_detail_wrapper{
+	width: 1200px;
+	height: 750px;
+	margin: 0 auto;
+}
+#seat_main{
+	height: 500px;
+	background: rgb(245,245,245);
+}
+#seat_main table{
+	border: none;
+}
+#seat_main tr{
+	width: 40px;
+	height: 40px;
+	border: none;
+}
+#seat_main td{
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	border: none;
+}
+#seat_main #screen{
+	background: url(/images/seats5.png)center center no-repeat;
+	background-size: 95%;
+	border: none;
+}
+#seat_main .seat{
+	background: url(/images/seats4.png) center center no-repeat;
+	background-size: 30px, 30px;
+	font-size: 12px;
+	cursor: pointer;
+}
+#seat_main .selected{
+	background:url(/images/seats1.png)center center no-repeat;
+	background-size: 30px,30px;
+}
+#seat_main .sold{
+	background:url(/images/seats3.png)center center no-repeat;
+	background-size: 30px,30px;
+}
+#ticket_submit{
+	width: 100px;
+	height: 30px;
+	border: none;
+	background: red;
+	color: white;
+	cursor: pointer;
+	margin-top: 60px;
+	float: right;
+	margin-right: 400px;
+}
+#ticket_seat_choose{
+	border: none;
+	font-size: 20px;
+	width: 500px;
+	margin-bottom: 10px;
+	margin-top: 40px;
+	color: gray;
+	background: rgb(245,245,245);
+}
+#ticket_seat_price{
+	border: none;
+	width: 40px;
+	font-size: 20px;
+	color: gray;
+	background: rgb(245,245,245);
+}
+#seat_main span{
+	display: block;
+	font-size: 16px;
+	float: left;
+}

@@ -102,7 +102,7 @@ block content
                     img(src="#{item.head}", alt="")              
                   .comment_info
                     p.user_name #{item.username}                
-                    p.comment_date 2017-05-14               
+                    p.comment_date #{item.comment_time}               
                     p.comment_score 评价分数：#{item.comment_score}             
                   .clear            
                 .comment_item
@@ -113,8 +113,9 @@ block content
                   textarea#new_comment(name="new_comment", cols="30", rows="3", wrap="virtual", maxlength="255", placeholder=" 在此输入评论内容")
                   |               
                   .clear
+                  input#show_id(type="text",name="movie_id" value="#{data.id}")
                   span#movie_score_title 评价分数 :
-                  input#movie_score(type="text",name="movie_core" placeholder="0~10")
+                  input#movie_score(type="text",name="movie_score" placeholder="0~10")
                   img#score_standard(src="/images/score_standard.jpeg")           
                   input#comment_submit(type="submit", name="submit", value="发 布")
                   input#show_login_status(type="submit",name="loginstatus",value='#{login_status}')  

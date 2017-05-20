@@ -306,3 +306,6 @@
 #aside_bot{
 	margin-bottom:40px;
 }
+#show_id{
+	display: none;
+}

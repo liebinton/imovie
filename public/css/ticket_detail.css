@@ -1,0 +1,68 @@
+.ticket_poster{
+	display: inline-block;
+	float: left;
+	height: 205px;
+	width: 200px;
+}
+.ticket_poster img{
+	width: 150px;
+	height: 205px;
+}
+.ticket_detail_item{
+	margin-left: 100px;
+}
+.ticket_detail_info{
+	display: block;
+	margin-top: 20px;
+	margin-bottom:40px;
+	background: rgb(245,245,245);
+	width: 1100px;
+}
+.ticket_detail_info p{
+	display: block;
+	height: 30px;
+	text-align: left;
+	line-height: 30px;
+	font-size: 16px;
+}
+.info_message_movie{
+	display: inline-block;
+	float: left;
+	margin-left: 30px;
+	margin-right: 100px;
+}
+.info_message_ticket{
+	margin-top: 60px;
+	display: inline-block;
+	float: left;
+	margin-right: 100px;
+}
+.info_message {
+	float: right;
+}
+.info_message_movie .ticket_detail_name{
+	margin-top: 20px;
+	font-size: 35px;
+	margin-bottom: 10px;
+}
+.info_message_movie .ticket_detail_actor{
+	font-size: 16px;
+}
+.info_message_movie .ticket_detail_kind{
+	font-size: 16px;
+}
+.info_message_movie .ticket_detail_year{
+	font-size: 16px;
+}
+.info_message_movie .ticket_detail_score{
+	font-size: 16px;
+}
+.info_message_ticket .ticket_detail_time{
+	color: red;
+}
+.info_message_ticket .ticket_detail_position{
+	color: red;
+}
+#seat_main{
+	padding-left: 200px;
+}
