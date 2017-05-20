@@ -13,11 +13,8 @@ router.get('/user',index.user_info);
 router.get('/show_change_page',index.show_change_page);
 router.post('/userinfo',index.change_userinfo);
 router.post('/comments',index.post_comment);
-router.get('/ticket',function(req,res){
-	res.render("ticket");
-});
-router.get('/order',function(req,res){
-	res.render("order");
-});
+router.get('/ticket',index.ticket_list);
+router.get('/order',index.order_page);
+router.post('/buy',index.buy_ticket);
 // router.get('/undefined',index.show_err);
 module.exports = router;

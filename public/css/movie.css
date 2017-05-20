@@ -6,6 +6,9 @@
     margin: 0 auto;
     height: 376px;
 }
+.banner_buy a{
+	color: white;
+}
 .banner{
 	width: 100%;
     min-width: 1200px;

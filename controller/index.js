@@ -210,3 +210,41 @@ exports.change_userinfo = function(req,res,next){
 		});
 	});
 };
+exports.ticket_list =function(req,res){
+	index_model.get_ticket_list(function(results){
+		console.log(results);
+		res.render('ticket',{data:results});
+	});
+}
+exports.order_page =function(req,res){
+	var id = req.query.id;
+	var movie_id = req.query.movie_id;
+	index_model.get_order_info(id,function(results){
+		index_model.get_sold_seat(movie_id,function(sold_seats){
+			console.log(results);
+			console.log(sold_seats);
+			var sold_seats_array= [];
+			for(i=0;i<sold_seats.length;i++){
+				sold_seats_array.push(sold_seats[i].ticket_seat);
+			}
+			console.log(sold_seats_array);
+			res.render('order',{data:results[0],sold:sold_seats_array});
+		});
+	});
+}
+exports.buy_ticket =function(req,res){
+	var id=req.body.movie_id;
+	var play=req.body.ticket_play;
+	var seats=req.body.ticket_seat_choose;
+	var price=req.body.ticket_seat_price;
+	var buyer=req.session.user_id;
+	var seats_temp;
+	for(var i=0;i<seats.length;i++){
+		seats_temp = seats[i];
+		index_model.save_buy_ticket(buyer,play,seats_temp,id,function(results){
+		console.log("success"+seats_temp);
+	});
+	}
+	
+
+}

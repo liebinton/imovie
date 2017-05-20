@@ -6,32 +6,32 @@ block content
       .ticket_detail_main
         .ticket_detail_info
           .ticket_poster
-            img(src="/images/test.jpeg", alt="")
+            img(src="#{data.poster}", alt="")
           |             
           .info_message_movie
-            p.ticket_detail_name 生化危机6：终章
+            p.ticket_detail_name #{data.name}
             |               
-            p.ticket_detail_actor 电影主演：米拉·乔沃维奇
+            p.ticket_detail_actor 电影主演：#{data.actor}
             |               
             p.ticket_detail_kind 电影类型：动作
             |               
-            p.ticket_detail_year 上映时间：2017
+            p.ticket_detail_year 上映时间：#{data.year}
             |               
-            p.ticket_detail_score 电影评分：6.4
+            p.ticket_detail_score 电影评分：#{data.star}
           |             
           .info_message_ticket
-            p.ticket_detail_language 影片语言：英语
+            p.ticket_detail_language 影片语言：#{data.language}
             |               
-            p.ticket_detail_type 荧幕类型：3D
+            p.ticket_detail_type 荧幕类型：#{data.type}
             |               
-            p.ticket_detail_time 观影时间：2017-4-5 10:23
+            p.ticket_detail_time 观影时间：#{data.ticket_time}
             |               
-            p.ticket_detail_position 观影地点：A号厅
+            p.ticket_detail_position 观影地点：#{data.ticket_position} 影厅
           |             
           .clear-flow
         |           
         .ticket_seat_main
-          form(action="/order", method="post")
+          form(action="/buy", method="post")
             #seat_main
               table
                 tr
@@ -174,31 +174,36 @@ block content
               span
                 | 订单金额：
                 input#ticket_seat_price(type="text", name="ticket_seat_price", readonly="true")
+                input(type="hidden" name="ticket_play" value="#{data.play}")
+                input#movie_id(type="hidden" name="movie_id" value="#{data.movie_id}")
+                input#ticket_sold(type="hidden" name="sold_seats" value="#{sold}")
                 |               ￥
               |             
               input#ticket_submit(type="submit", name="submit", value="订 票")  
   .clear-flow
   script.
     var seatList = [];
-    var sold_data =[1,3,5];
+    //- var sold_data =[1,3,5];
+    var sold_data = $("#ticket_sold").val();
+    console.log(sold_data);
     for(var i=0;i<sold_data.length;i++){
-    $(".seat[data-value='"+sold_data[i]+"']").addClass("sold");
+      $(".seat[data-value='"+sold_data[i]+"']").addClass("sold");
     }
     $(".seat").click(function(){
-    if($(this).hasClass("sold")){
-    return false;
+      if($(this).hasClass("sold")){
+      return false;
     }
     if ($(this).data("selected")) {
-    seatList.splice($.inArray($(this).data("value"),seatList),1);
-    $(this).removeClass('selected');
-    $(this).data("selected",false);
+      seatList.splice($.inArray($(this).data("value"),seatList),1);
+      $(this).removeClass('selected');
+      $(this).data("selected",false);
     }else{
-    seatList.push($(this).data("value"));
-    $(this).addClass('selected');
-    $(this).data("selected",true);
+      seatList.push($(this).data("value"));
+      $(this).addClass('selected');
+      $(this).data("selected",true);
     }
-    console.log(seatList);
-    $("#ticket_seat_choose").val(seatList);
-    $('#ticket_seat_price').val(seatList.length*30);
+      console.log(seatList);
+      $("#ticket_seat_choose").val(seatList);
+      $('#ticket_seat_price').val(seatList.length*30);
     });
 

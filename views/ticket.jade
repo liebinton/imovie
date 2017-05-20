@@ -18,26 +18,26 @@ block content
         li 票价
       |         
       .clear
-    |       
-    .ticket_item
-      ul
-        li
-          p 生化危机6:终章
-        |           
-        li
-          p 2017-5-6
-        |           
-        li
-          p A影厅
-        |           
-        li
-          p 40张
-        |           
-        li
-          p 30￥
-        |           
-        li
-          a(href="")
-            span 购 票
-      |         
-      .clear
+    each item in data         
+      .ticket_item
+        ul
+          li
+            p #{item.name}
+          |           
+          li
+            p #{item.ticket_time}
+          |           
+          li
+            p #{item.ticket_position}影厅
+          |           
+          li
+            p #{item.ticket_amount}张
+          |           
+          li
+            p #{item.ticket_price}￥
+          |           
+          li
+            a(href="/order?id=#{item.ticket_id}&movie_id=#{item.movie_id}")
+              span 购 票
+        |         
+        .clear

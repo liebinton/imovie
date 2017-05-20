@@ -122,3 +122,43 @@ exports.do_change_userinfo =function(new_username,new_password,new_sex,new_age,n
 		}
 	});
 }
+exports.get_ticket_list =function(callback){
+	var sql = 'select * from t_ticket tk,t_movie tm where tk.ticket_seat=1 and tk.movie_id=tm.id';
+	db.connection.query(sql,[],function(err,results){
+		if(err){
+			throw err;
+		}else{
+			callback&&callback(results);
+		}
+	});
+}
+exports.get_order_info =function(id,callback){
+	var sql = 'select * from t_ticket tk,t_movie tm where tk.ticket_seat=1 and tk.ticket_id=? and tk.movie_id=tm.id';
+	db.connection.query(sql,[id],function(err,results){
+		if(err){
+			throw err;
+		}else{
+			callback&&callback(results);
+		}
+	});
+}
+exports.get_sold_seat =function(id,callback){
+	var sql = 'select ticket_seat from t_ticket where movie_id=? and ticket_status=2';
+	db.connection.query(sql,[id],function(err,results){
+		if(err){
+			throw err;
+		}else{
+			callback&&callback(results);
+		}
+	});
+}
+exports.save_buy_ticket =function(buyer_id,play,seats,id,callback){
+	var sql="update t_ticket set ticket_status = 2,ticket_buyer_id=? where play=? and ticket_seat=?";
+	db.connection.query(sql,[buyer_id,play,seats],function(err,results){
+		if(err){
+			throw err;
+		}else{
+			callback&&callback(results);
+		}
+	});
+}
