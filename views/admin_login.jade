@@ -1,0 +1,43 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    |   
+    |     
+    title Login
+    |   
+    |     
+    link(rel="stylesheet", type="text/css", href="/css/login.css")
+    style.
+      body{
+      background:url('/images/backg7.jpg')no-repeat;
+      background-position:center center;
+      }
+      #login h1{
+      color:white;
+      }
+      a{
+      color:white;
+      }
+      span{
+      color:white;
+      font-size:16px;
+      display:inline-block;
+      }
+  |   
+  body
+    #login
+      h1 Admin Login
+      h1 管理员登录
+      |   
+      |         
+      form(method="post", action="/admin_login")
+        span #{data}
+        input(type="text", required="required", placeholder="管理员名", name="admin_name")
+        |   
+        |             
+        input(type="password", required="required", placeholder="密码", name="admin_password")
+        |   
+        |             
+        button.but(type="submit") 登录
+        

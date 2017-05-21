@@ -7,20 +7,19 @@ block content
     |       
     #ticket_list_head
       ul
-        li 电影名
-        |           
-        li 放映时间
-        |           
-        li 观影厅
-        |           
-        li 余票
-        |           
+        li 场次
+        li 电影名          
+        li 放映时间           
+        li 观影厅         
         li 票价
+        li 购买
       |         
       .clear
     each item in data         
       .ticket_item
         ul
+          li
+            p #{item.play}
           li
             p #{item.name}
           |           
@@ -28,11 +27,7 @@ block content
             p #{item.ticket_time}
           |           
           li
-            p #{item.ticket_position}影厅
-          |           
-          li
-            p #{item.ticket_amount}张
-          |           
+            p #{item.ticket_position}影厅           
           li
             p #{item.ticket_price}￥
           |           

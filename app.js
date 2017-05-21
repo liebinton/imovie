@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
-	secret: 'lieb', cookie: { maxAge: 60000 }, resave: true, saveUninitialized: true 
+	secret: 'lieb', cookie: { maxAge: 1800000 }, resave: true, saveUninitialized: true 
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 

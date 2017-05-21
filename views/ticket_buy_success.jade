@@ -1,0 +1,24 @@
+extends layout
+block content
+  #ticket_content
+    h3 购票成功 
+    #ticket_main
+      span.ticket_name #{data_ticket.name}生化危机：终章
+      |       
+      span.ticket_time #{data_ticket.ticket_time}2017-6-5-10:00
+      |       
+      span.ticket_main TICKET
+      |       
+      span.ticket_pos #{data_ticket.ticket_position}A厅
+      |       
+      span.ticket_seat #{seats}座
+      |       
+      .clear
+    |     
+    #jump_to
+      a#index_to(href="/")
+        | 返回主页 >
+      |       
+      a#ticket_to(href="/ticket")
+        | 继续购票 >
+

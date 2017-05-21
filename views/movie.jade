@@ -54,42 +54,43 @@ block content
                   li
                     .actor_type 导演
                     | 									
-                    img(src="#{data.poster}", alt="")
+                    img(src="#{data.director_img}", alt="")
                     | 									
                     .actor_info #{data.director}
                   | 								
                   li
                     .actor_type 演员
                     | 									
-                    img(src="#{data.poster}", alt="")
+                    img(src="#{data.actor_img}", alt="")
                     | 									
                     .actor_info #{data.actor}
                   | 								
                   li
                     .actor_type 演员
                     | 									
-                    img(src="#{data.poster}", alt="")
+                    img(src="#{data.actor_img2}", alt="")
                     | 									
-                    .actor_info #{data.actor}
+                    .actor_info #{data.actor2}
                   li
                     .actor_type 演员
                     | 									
-                    img(src="#{data.poster}", alt="")
+                    img(src="#{data.actor_img3}", alt="")
                     | 									
-                    .actor_info #{data.actor}
+                    .actor_info #{data.actor3}
                   | 								
                   li
                     .actor_type 演员
                     | 									
-                    img(src="#{data.poster}", alt="")
+                    img(src="#{data.actor_img4}", alt="")
                     | 									
-                    .actor_info #{data.actor}
+                    .actor_info #{data.actor4}
           | 				
           .movie_pics.detail_module
             .module_title 预告片
             | 					
             .module_content
-              video(src="videos/video_test.mp4", type="video/mp4", width="700", height="300")				
+              .video_div
+                video(src="videos/video_test.mp4", type="video/mp4", width="700", height="300" controls="true")				
           .comments.detail_module
             .module_title 热门短评          
             .write_item

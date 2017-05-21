@@ -1,0 +1,27 @@
+extends layout
+block content
+ .content
+      // banner
+    #content_inner
+      #content_main
+        #moive_grid
+          .panel
+            .panel_header               
+              span.panel_title
+                span.panel_title_content
+                  | 全部电影（ #{data.length}部 ）             
+            .panel_content
+                each item in data
+                  .panel_item
+                    a(href="/movie?id=#{item.id}")
+                      img.item_img(src='#{item.poster}', alt="")
+                      |                   
+                      .item_type  #{item.type} 
+                      |                   
+                      .item_info
+                        | #{item.name} 
+                        span.item_score #{item.star}
+                      |                   
+                    a(href='/movie?id=#{item.id}')
+                      .item_buy 查看详情
+    .clear

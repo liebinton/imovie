@@ -1,0 +1,67 @@
+extends layout
+block content
+  link(rel="stylesheet", href="css/add_ticket.css")
+  style.
+    #header_login{
+      display:none;
+    }
+  #content
+  .wrapper
+    #left
+      #left_top
+        p 新增电影信息
+      |         
+      #left_bot
+        p 填写信息
+    |       
+    #right
+      #right_top
+        p#right_top_title 电影票信息
+      |         
+      #user_head_main.ticket_head
+        p.movie_mes_head 电影信息
+        p.key.key_head 电影名
+        |             
+        p.value.vlaue_head 电影ID
+        |             
+        .clear
+        each item in data             
+          .movie_show_item
+            p.key #{item.name}
+            |               
+            p.value #{item.id}
+            |               
+            .clear
+      |         
+      #right_bot
+        #user_info.ticket_post_right
+          form(action="/add_ticket", method="post")
+            .info_item
+              p 电影编号：
+              |                 
+              input.user_input(type="text", name="movie_id")
+            |               
+            .info_item
+              p 场 次：  
+              |                 
+              input.user_input(type="text", name="play")
+            |               
+            .info_item
+              p 放映时间：
+              |                 
+              input.user_input(type="text", name="ticket_time")
+            |               
+            .info_item
+              p 放映厅：
+              |                 
+              input.user_input(type="text", name="ticket_position")
+            |               
+            .info_item
+              p 价格：
+              |                 
+              input.user_input(type="tel")
+            |               
+            .info_item
+              input#info_upload(type="submit", value="新 增")
+    |       
+    #clear

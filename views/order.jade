@@ -179,15 +179,17 @@ block content
                 input#ticket_sold(type="hidden" name="sold_seats" value="#{sold}")
                 |               ￥
               |             
-              input#ticket_submit(type="submit", name="submit", value="订 票")  
+              input#ticket_submit(type="submit", name="submit", value="购 票")  
   .clear-flow
   script.
     var seatList = [];
     //- var sold_data =[1,3,5];
     var sold_data = $("#ticket_sold").val();
     console.log(sold_data);
-    for(var i=0;i<sold_data.length;i++){
-      $(".seat[data-value='"+sold_data[i]+"']").addClass("sold");
+    var sold_data_right = sold_data.split(",");
+    for(var i=0;i<sold_data_right.length;i++){
+      console.log(sold_data_right[i])
+      $(".seat[data-value='"+sold_data_right[i]+"']").addClass("sold");
     }
     $(".seat").click(function(){
       if($(this).hasClass("sold")){

@@ -1,0 +1,82 @@
+#ticket_wrapper{
+	position: relative;
+	width: 1200px;
+	margin: 0 auto;
+	height: 800px;
+	font-size: 13px;
+/*	background: red;*/
+}
+#ticket_page_info{
+	margin:0 auto;
+	height: 100px;
+	text-align: center;
+	line-height: 100px;
+	color: gray;
+	width: 1200px;
+	border-bottom: 1px solid silver;
+	font-size: 18px;
+}
+#ticket_list_head li{
+	float: left;
+	font-size: 15px;
+	width: 200px;
+	text-align: center;
+	color: gray;
+}
+#ticket_list_head ul{
+	text-align: center;
+}
+#ticket_list_head{
+	margin: 0 auto;
+	margin-top: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid silver;
+	width: 1200px;
+}
+.clear{
+	clear: both;
+}
+.ticket_item{
+	margin: 0 auto;
+	width: 1200px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+}
+.ticket_item li{
+	float: left;
+	width: 200px;
+}
+.ticket_item li span{
+	background: orange;
+	width: 90px;
+	height: 35px;
+	font-size: 15px;
+	color: white;
+	display: inline-block;
+	line-height: 35px;
+	border-radius: 5px;
+}
+
+
+
+
+#ticket_add{
+	position: absolute;
+	right: 54px;
+	top:50px;
+	width: 95px;
+	height: 35px;
+	background: orange;
+	color: white;
+	border-radius: 5px;
+}
+#ticket_add a{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	color: white;
+	text-align: center;
+	line-height: 35px;
+	font-size: 15px;
+}

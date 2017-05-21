@@ -1,0 +1,64 @@
+#ticket_content{
+	height: 500px;
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 50px;
+}
+#ticket_content h3{
+	text-align: center;
+	color: gray;
+}
+#ticket_main{
+	margin: 0 auto;
+	margin-top: 40px;
+	position: relative;
+	height: 200px;
+	width: 400px;
+	background: url(/images/ticket.jpg)center center no-repeat;
+	background-size:100%,100%;
+	font-size: 24px; 
+	color: brown;
+}
+#jump_to{
+
+	width: 400px;
+	margin: 0 auto;
+	margin-top: 40px;
+}
+.clear{
+	clear: both;
+}
+.ticket_name{
+	position: absolute;
+	left: 20px;
+	top: 20px;
+}
+.ticket_time{
+	position: absolute;
+	left: 200px;
+	top: 22px;
+}
+.ticket_pos{
+	position: absolute;
+	left:60px;
+	top: 135px;
+}
+.ticket_seat{
+	position: absolute;
+	left: 220px;
+	top: 135px;
+}
+.ticket_main{
+	position: absolute;
+	left: 120px;
+	top: 82px;
+	font-size: 40px;
+}
+#index_to{
+	margin-left: 20px;
+	margin-top: 60px;
+}
+#ticket_to{
+	margin-left: 100px;
+	margin-top: 60px;
+}

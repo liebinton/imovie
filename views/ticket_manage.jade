@@ -1,0 +1,42 @@
+extends layout
+block content
+  style.
+    #header_login{
+      display:none;
+    }
+  #content
+  #ticket_wrapper
+    #ticket_page_info 电 影 票 务 管 理
+    #ticket_add
+      a(href="/add_ticket") 新 增       
+    #ticket_list_head
+      ul
+        li 场次
+        li 电影名          
+        li 放映时间           
+        li 观影厅         
+        li 票价
+        li 操作
+      |         
+      .clear
+    each item in data         
+      .ticket_item
+        ul
+          li
+            p #{item.play}
+          li
+            p #{item.name}
+          |           
+          li
+            p #{item.ticket_time}
+          |           
+          li
+            p #{item.ticket_position}影厅           
+          li
+            p #{item.ticket_price}￥
+          |           
+          li
+            a(href="/ticket_delete?play=#{item.play}&movie_id=#{item.movie_id}")
+              span 删 除            
+        |         
+        .clear

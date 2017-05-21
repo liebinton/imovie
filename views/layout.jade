@@ -13,20 +13,23 @@ html(lang="en")
     link(rel='stylesheet', href='css/ticket.css')
     link(rel="stylesheet", href="css/seat.css")
     link(rel="stylesheet", href="css/ticket_detail.css")
+    link(rel="stylesheet", href="css/success.css")
+    link(rel="stylesheet", href="css/ticket_out.css")
+    link(rel="stylesheet", href="css/ticket_manage.css")
     script(src="/javascripts/jquery.min.js")
   body
     // header
     header#header
       #header_inner
         #header_logo
-          a(href="/")
+          a(href="/admin_login_page")
             img#logo_img(src="images/logo.png", alt="")
         | 			
         ul#header_pages
           a(href="/")
             li#header_index.page_selected 主页
           | 				
-          a(href="")
+          a(href="/all")
             li#header_movie 电影
           | 				
           a(href="/list")
